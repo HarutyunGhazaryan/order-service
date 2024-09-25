@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Order Details</title>
+        <link rel="stylesheet" type="text/css" href="../static/styles.css" />
+    </head>
+    <body>
+        <form onsubmit="return submitForm()">
+            <input
+                type="text"
+                id="order_uid"
+                name="order_uid"
+                placeholder="Enter Order UID"
+                required
+            />
+            <button type="submit">Get Order</button>
+        </form>
+        <hr />
+        {{if .Error}}
+        <p style="color: red; text-align: center; font-size: 22px">
+            {{.Error}}
+        </p>
+        {{else}} {{.OrderHTML}} {{end}}
+        <script type="text/javascript">
+            function submitForm() {
+                var orderUID = document.getElementById('order_uid').value;
+                window.location.href = '/display/' + orderUID;
+                return false;
+            }
+        </script>
+    </body>
+</html>
